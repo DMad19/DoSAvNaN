@@ -41,6 +41,56 @@ public class SingleLinkedList {
         temp.next = newNode;
         size+=1;
     }
+    public int deleteFirst(){
+        int value = head.value;
+        head = head.next;
+        if(tail==null){
+            tail = head;
+        }
+        size-=1;
+        return value;
+    }
+    public int deleteLast(){
+        if(size<=1){
+            return deleteFirst();
+        }
+        int value = tail.value;
+        Node lastButOne = get(size-2);
+        tail = lastButOne;
+        lastButOne.next = null;
+        size-=1;
+        return value;
+    }
+    public int delete(int index){
+        if(index==0){
+            return deleteFirst();
+        }
+        if(index==size-1){
+            return deleteLast();
+        }
+        Node indexButOne = get(index-1);
+        int value = indexButOne.next.value;
+        indexButOne.next = indexButOne.next.next;
+        size-=1;
+        return value;
+    }
+    public Node find(int value){
+        Node temp = head;
+        while(temp!=null){
+            if(temp.value==value){
+                return temp;
+            }
+            temp = temp.next;
+        }
+        return null;
+    }
+    public Node get(int index){
+        Node temp = head;
+        for(int i=0;i<index;i++){
+            temp = temp.next;
+        }
+        return temp;
+    }
     public void display(){
         Node temp = head;
         while(temp!=null){
