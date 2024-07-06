@@ -1,6 +1,6 @@
 package Linkedlist;
 
-public class UseSingleLinkedList {
+public class UseLinkedList {
     public static void main(String[] args) {
         /* Single Linked List
         SingleLinkedList sl = new SingleLinkedList();
@@ -18,11 +18,26 @@ public class UseSingleLinkedList {
         System.out.println(sl.delete(2));
         sl.display();
         */
+        /* Doubly Linked List
         DoublyLinkedList dl = new DoublyLinkedList();
+        dl.insertLast(2);
         dl.insertFirst(4);
-        dl.insertFirst(3);
-        dl.insertFirst(2);
         dl.insertFirst(1);
+        dl.insertLast(2333);
+        dl.insert(0,0);
+        dl.insert(1,11);
+        dl.insert(7,44);
+        dl.insertAfter(11,12);
         dl.display();
+        */
+        CircularLinkedList cl = new CircularLinkedList();
+        cl.insert(1);
+        cl.insert(2);
+        cl.insert(3);
+        cl.display();
+        cl.delete(3);
+        cl.display();
+        cl.insert(4);
+        cl.display();
     }
 }
