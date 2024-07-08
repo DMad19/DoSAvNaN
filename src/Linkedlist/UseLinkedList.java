@@ -2,7 +2,7 @@ package Linkedlist;
 
 public class UseLinkedList {
     public static void main(String[] args) {
-        /* Single Linked List
+        //Single Linked List
         SingleLinkedList sl = new SingleLinkedList();
         sl.insertFirst(4);
         sl.insertFirst(3);
@@ -11,13 +11,14 @@ public class UseLinkedList {
         sl.insertLast(5);
         sl.insert(22,3);
         sl.display();
+        sl.insertUsingRecusrion(44,3);
+        sl.display();
         System.out.println(sl.deleteFirst());
         sl.display();
         System.out.println(sl.deleteLast());
         sl.display();
         System.out.println(sl.delete(2));
         sl.display();
-        */
         /* Doubly Linked List
         DoublyLinkedList dl = new DoublyLinkedList();
         dl.insertLast(2);
@@ -30,7 +31,7 @@ public class UseLinkedList {
         dl.insertAfter(11,12);
         dl.display();
         */
-        CircularLinkedList cl = new CircularLinkedList();
+        /*CircularLinkedList cl = new CircularLinkedList();
         cl.insert(1);
         cl.insert(2);
         cl.insert(3);
@@ -39,5 +40,6 @@ public class UseLinkedList {
         cl.display();
         cl.insert(4);
         cl.display();
+        */
     }
 }
