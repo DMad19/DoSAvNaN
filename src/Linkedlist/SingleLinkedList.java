@@ -103,6 +103,77 @@ public class SingleLinkedList {
         }
         return temp;
     }
+    public void removeDuplicates(){
+        head = removeDuplicates(head);
+    }
+    private Node removeDuplicates(Node head){
+        Node node = head;
+        if(node==null){
+            return node;
+        }
+        while(node.next!=null){
+            if(node.next.value==node.value){
+                node.next = node.next.next;
+                size-=1;
+            }else{
+                node = node.next;
+            }
+        }
+        tail = node;
+        return head;
+    }
+    public static SingleLinkedList mergeLL(SingleLinkedList f,SingleLinkedList s){
+        SingleLinkedList newLL = new SingleLinkedList();
+        Node first = f.head;
+        Node second = s.head;
+        while(first!=null && second!=null){
+            if(first.value < second.value){
+                newLL.insertLast(first.value);
+                first = first.next;
+            }else{
+                newLL.insertLast(second.value);
+                second = second.next;
+            }
+        }
+        while(first!=null){
+            newLL.insertLast(first.value);
+            first = first.next;
+        }
+        while(second!=null){
+            newLL.insertLast(second.value);
+            second = second.next;
+        }
+        return newLL;
+    }
+    public boolean isCycleLinkedList(SingleLinkedList ll){
+        Node fast = head;
+        Node slow = head;
+        while(fast.next!=null && fast.next.next!=null){
+            fast = fast.next.next;
+            slow = slow.next;
+            if(slow==fast){
+                return true;
+            }
+        }
+        return false;
+    }
+    public int lengthOfCycle(SingleLinkedList ll){
+        Node fast = head;
+        Node slow = head;
+        while(fast.next!=null && fast.next.next!=null){
+            fast = fast.next.next;
+            slow = slow.next;
+            if(slow==fast){
+                int length = 0;
+                do{
+                    length+=1;
+                    slow = slow.next;
+                }while(slow!=fast);
+                return length;
+            }
+        }
+        return 0;
+    }
     public void display(){
         Node temp = head;
         while(temp!=null){
