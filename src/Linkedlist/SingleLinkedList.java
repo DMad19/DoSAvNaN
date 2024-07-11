@@ -122,10 +122,64 @@ public class SingleLinkedList {
         tail = node;
         return head;
     }
-    public static SingleLinkedList mergeLL(SingleLinkedList f,SingleLinkedList s){
+    public Node Node(Node head) {
+        if(head==null || head.next==null){
+            return head;
+        }
+        Node mid = findMid(head);
+        Node l = Node(head);
+        Node r = Node(mid);
+        return merge(l,r);
+    }
+    public Node merge(Node f, Node s){
+        Node head = new Node();
+        Node temp = head;
+        while(f!=null && s!=null){
+            if(f.value<s.value){
+                temp.next = f;
+                temp = temp.next;
+                f = f.next;
+            }else{
+                temp.next = s;
+                temp = temp.next;
+                s = s.next;
+            }
+        }
+        if(f!=null){
+            temp.next = f;
+        }
+        else{
+            temp.next = s;
+        }
+        return head.next;
+    }
+    public Node findMid(Node head){
+        Node f = head;
+        Node s = head;
+        Node prev = null;
+        while(f!=null && f.next!=null){
+            prev = s;
+            f = f.next.next;
+            s = s.next;
+        }
+        if (prev != null) {
+            prev.next = null;
+        }
+        return s;
+    }
+    public Node findMiddle(){
+        Node f = head;
+        Node s = head;
+        while(f!=null && f.next!=null){
+            f = f.next.next;
+            s = s.next;
+        }
+        return s;
+    }
+    public static Node mergeLL(Node f,Node s){
         SingleLinkedList newLL = new SingleLinkedList();
-        Node first = f.head;
-        Node second = s.head;
+        Node first = f;
+        Node second = s;
         while(first!=null && second!=null){
             if(first.value < second.value){
                 newLL.insertLast(first.value);
@@ -143,7 +197,7 @@ public class SingleLinkedList {
             newLL.insertLast(second.value);
             second = second.next;
         }
-        return newLL;
+        return newLL.head;
     }
     public boolean isCycleLinkedList(SingleLinkedList ll){
         Node fast = head;
@@ -174,6 +228,23 @@ public class SingleLinkedList {
         }
         return 0;
     }
+    public Node CycleLinkedList2(SingleLinkedList ll){
+        int length = lengthOfCycle(ll);
+        if(length==0){
+            return null;
+        }
+        Node first = head;
+        Node second = head;
+        while(length>0){
+            second = second.next;
+        }
+        while(second!=first){
+            first = first.next;
+            second = second.next;
+        }
+        return first;
+    }
+
     public void display(){
         Node temp = head;
         while(temp!=null){
@@ -185,6 +256,7 @@ public class SingleLinkedList {
     private class Node{
         private int value;
         private Node next;
+        public Node() {}
         private Node(int value){
             this.value = value;
         }

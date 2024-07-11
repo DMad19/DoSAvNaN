@@ -14,7 +14,7 @@ public class MergeTwoLinkedLists {
         s.insertLast(4);
         s.insertLast(7);
 
-        SingleLinkedList newll = SingleLinkedList.mergeLL(f,s);
-        newll.display();
+//        SingleLinkedList newll = SingleLinkedList.mergeLL();
+//        newll.display();
     }
 }
