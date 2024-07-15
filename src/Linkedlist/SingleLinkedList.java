@@ -199,6 +199,133 @@ public class SingleLinkedList {
         }
         return newLL.head;
     }
+    public void bubbleSort(){
+        bubbleSort(size-1,0);
+    }
+    private void bubbleSort(int row,int col){
+        if(row==0){
+            return;
+        }
+        if(col<row){
+            Node first = get(col);
+            Node second = get(col+1);
+            if(first.value> second.value){
+                if(first==head){
+                    head = second;
+                    first.next = second.next;
+                    second.next = first;
+                }else if(second == tail){
+                    Node prev = get(col-1);
+                    prev.next = second;
+                    second.next = first;
+                    tail = first;
+                    first.next = null;
+                }else{
+                    Node prev = get(col-1);
+                    prev.next = second;
+                    first.next = second.next;
+                    second.next = first;
+                }
+            }
+            bubbleSort(row,col+1);
+        }
+        bubbleSort(row-1,0);
+    }
+    public void reverseLinkedList(){
+        reverseLinkedList(head);
+    }
+    private void reverseLinkedList(Node node){
+        if(node==tail){
+            head = tail;
+            return;
+        }
+        reverseLinkedList(node.next);
+        tail.next = node;
+        tail = node;
+        tail.next = null;
+    }
+    public void reverseLinkedListIteration(){
+        if(head.next==null || head==null){
+            return;
+        }
+        Node prev = null;
+        Node pres = head;
+        Node next = pres.next;
+        while(pres!=null){
+            pres.next = prev;
+            prev = pres;
+            pres = next;
+            if(pres!=null) {
+                next = pres.next;
+            }
+        }
+        head = prev;
+    }
+    public Node reverseLinkedListIteration(Node head){
+        if(head.next==null || head==null){
+            return head;
+        }
+        Node prev = null;
+        Node pres = head;
+        Node next = pres.next;
+        while(pres!=null){
+            pres.next = prev;
+            prev = pres;
+            pres = next;
+            if(pres!=null) {
+                next = pres.next;
+            }
+        }
+        head = prev;
+        return head;
+    }
+    public void reverseLinkedList2(int l,int r){
+        if(l==r){
+            return;
+        }
+        Node present = head;
+        Node prev = null;
+        for (int i = 0;present!=null && i < l-1; i++) {
+            prev = present;
+            present = present.next;
+        }
+        Node last = prev;
+        Node newEnd = present;
+        Node next = present.next;
+        for (int i = 0; present!=null && i < r-l+1; i++) {
+            present.next = prev;
+            prev = present;
+            present = next;
+            if(next!=null){
+                next = next.next;
+            }
+        }
+        if(last==null){
+            prev = head;
+        }else{
+            last.next = prev;
+        }
+        newEnd.next = present;
+    }
+    public boolean isPalindrome(){
+        Node mid = findMid(head);
+        Node midhead = reverseLinkedListIteration(mid);
+        Node first = head;
+        Node second = midhead;
+        while(first!=null && second!=null ){
+            if(first.value!=second.value){
+                break;
+            }else{
+                first = first.next;
+                second = second.next;
+            }
+        }
+        reverseLinkedList(midhead);
+        if(first==null || second==null){
+            return true;
+        }
+        return false;
+    }
     public boolean isCycleLinkedList(SingleLinkedList ll){
         Node fast = head;
         Node slow = head;
