@@ -122,13 +122,13 @@ public class SingleLinkedList {
         tail = node;
         return head;
     }
-    public Node Node(Node head) {
+    public Node MergeSort(Node head) {
         if(head==null || head.next==null){
             return head;
         }
         Node mid = findMid(head);
-        Node l = Node(head);
-        Node r = Node(mid);
+        Node l = MergeSort(head);
+        Node r = MergeSort(mid);
         return merge(l,r);
     }
     public Node merge(Node f, Node s){
@@ -306,6 +306,113 @@ public class SingleLinkedList {
             last.next = prev;
         }
         newEnd.next = present;
+    }
+    public void reorder(){
+        Node mid = findMiddle();
+        Node midhead = reverseLinkedListIteration(mid);
+        Node f = head;
+        Node s = midhead;
+        while(f!=null && s!=null){
+            Node temp = f.next;
+            f.next = s;
+            f = temp;
+            temp = s.next;
+            s.next = f;
+            s = temp;
+        }
+        if(f!=null){
+            f.next = null;
+        }
+    }
+    public void reverseInKGroup(int k){
+        if(head==null || head.next==null){
+            return;
+        }
+
+        Node prev = null;
+        Node pres = head;
+        Node next = head.next;
+        int count = 0;
+        while(true){
+            Node last = prev;
+            Node temp = pres;
+            Node newEnd = pres;
+            while(temp!=null){
+                count+=1;
+                temp = temp.next;
+                if(count==k){
+                    break;
+                }
+            }
+            if(count==k) {
+                for (int i = 1; i <= k; i++) {
+                    pres.next = prev;
+                    prev = pres;
+                    pres = next;
+                    if (next != null) {
+                        next = next.next;
+                    }
+                }
+                if(last!=null){
+                    last.next = prev;
+                }else {
+                    head = prev;
+                }
+                newEnd.next = pres;
+                prev = newEnd;
+                count=0;
+            }else{
+                return;
+            }
+        }
+    }
+    public void reverseInAlternateKGroup(int k){
+        if(head==null || head.next==null){
+            return;
+        }
+
+        Node prev = null;
+        Node pres = head;
+        Node next = head.next;
+        int count = 0;
+        while(true){
+            Node last = prev;
+            Node temp = pres;
+            Node newEnd = pres;
+            while(temp!=null){
+                count+=1;
+                temp = temp.next;
+                if(count==k){
+                    break;
+                }
+            }
+            if(count==k) {
+                for (int i = 1; i <= k; i++) {
+                    pres.next = prev;
+                    prev = pres;
+                    pres = next;
+                    if (next != null) {
+                        next = next.next;
+                    }
+                }
+                if(last!=null){
+                    last.next = prev;
+                }else {
+                    head = prev;
+                }
+                newEnd.next = pres;
+                for (int i = 1; pres!=null && i <= k; i++){
+                    prev = pres;
+                    pres = pres.next;
+                    if(next!=null){
+                        next = next.next;
+                    }
+                }
+                count=0;
+            }else{
+                return;
+            }
+        }
     }
     public boolean isPalindrome(){
         Node mid = findMid(head);
