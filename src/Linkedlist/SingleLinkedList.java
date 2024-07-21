@@ -433,6 +433,30 @@ public class SingleLinkedList {
         }
         return false;
     }
+    public void rotate(int k){
+        if(k==0){
+            return;
+        }
+        int size = 0;
+        Node node = head;
+        while(node!=null){
+            size+=1;
+            node = node.next;
+        }
+        Node newlistEnd = null;
+        Node newListStart = head;
+        for(int i=0;i<size-k;i++){
+            newlistEnd = newListStart;
+            newListStart = newListStart.next;
+        }
+        newlistEnd.next = null;
+        node = newListStart;
+        for(int i=0;i<k-1;i++){
+            node = node.next;
+        }
+        node.next = head;
+        head = newListStart;
+    }
     public boolean isCycleLinkedList(SingleLinkedList ll){
         Node fast = head;
         Node slow = head;
