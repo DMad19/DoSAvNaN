@@ -29,7 +29,7 @@ public class LargestRectangleInHistogram {
         if(stack.isEmpty()){
             area = heights[popped] * i;
         }else{
-            area = heights[popped] * (i - popped);
+            area = heights[popped] * (i - 1 - stack.peek());
         }
         return area;
     }
