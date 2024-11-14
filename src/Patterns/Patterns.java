@@ -11,6 +11,7 @@ public class Patterns {
         pattern28a(5);
         pattern29(5);
         pattern17(5);
+        pattern31(5);
     }
     static void pattern1(int n){
         System.out.println("Pattern 1:");
@@ -156,6 +157,14 @@ public class Patterns {
             }
             for (int j = 2; j<=columns; j++) {
                 System.out.print(j);
+            }
+            System.out.println();
+        }
+    }
+    static void pattern31(int n){
+        for (int i = 0; i <= 2*n; i++) {
+            for (int j = 0; j <= 2*n; j++) {
+                System.out.print(Math.min(Math.min(j,i),Math.min((2*n)-i,(2*n)-j))+" ");
             }
             System.out.println();
         }
