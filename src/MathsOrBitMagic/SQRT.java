@@ -1,4 +1,4 @@
-package Maths;
+package MathsOrBitMagic;
 
 public class SQRT {
     public static void main(String[] args) {

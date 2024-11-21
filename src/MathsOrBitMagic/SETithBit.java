@@ -1,4 +1,4 @@
-package Maths;
+package MathsOrBitMagic;
 
 public class SETithBit {
     public static void main(String[] args) {

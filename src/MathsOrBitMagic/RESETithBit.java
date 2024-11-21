@@ -1,4 +1,4 @@
-package Maths;
+package MathsOrBitMagic;
 
 public class RESETithBit {
     public static void main(String[] args) {

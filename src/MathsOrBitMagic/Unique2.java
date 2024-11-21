@@ -1,4 +1,4 @@
-package Maths;
+package MathsOrBitMagic;
 
 public class Unique2 {
     public static void main(String[] args) {
