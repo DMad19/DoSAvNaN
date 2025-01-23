@@ -11,6 +11,28 @@ def NQueens(board,row):
             count += NQueens(board,row+1)
             board[row][i] = '.'
     return count
+
+# without using row and col args -- like sudoku solver
+def NQueens2(board):
+    c = 0
+    for i in range(len(board)):
+        flag = True
+        for j in range(len(board)):
+            if board[i][j] == "Q":
+                c+=1
+                flag = False
+        if flag:
+            break
+    if c==len(board):
+        return [[''.join(arr) for arr in board]]
+    l = []
+    for col in range(len(board)):
+        if(isSafe(board,i,col)):
+            board[i][col] = "Q"
+            l.extend(NQueens(board))
+            board[i][col] = "."
+    return l
+
 def isSafe(board,row,col):
     # col
     for i in range(row):
