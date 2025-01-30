@@ -13,13 +13,16 @@ public class ReversingArray {
         System.out.println(Arrays.toString(arr));
         reverse(arr);
         System.out.println(Arrays.toString(arr));
+        sc.close();
     }
-    static void reverse(int[] arr){
-        for (int i = 0; i < arr.length/2; i++) {
-            swap(arr,i, arr.length-i-1);
+
+    static void reverse(int[] arr) {
+        for (int i = 0; i < arr.length / 2; i++) {
+            swap(arr, i, arr.length - i - 1);
         }
     }
-    static void swap(int[] arr,int index,int target){
+
+    static void swap(int[] arr, int index, int target) {
         int temp = arr[index];
         arr[index] = arr[target];
         arr[target] = temp;

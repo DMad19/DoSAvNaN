@@ -7,7 +7,7 @@ class Solution:
         board = [['.' for i in range(n)] for i in range(n)]
         return getNQueens(board,0,0)
 def getNQueens(board,row,col):
-    if row==n:
+    if row==len(board):
         l = []
         for arr in board:
             for j in range(len(arr)):
@@ -15,7 +15,7 @@ def getNQueens(board,row,col):
                     l.append(j+1)
         return [l]
     l = []
-    for i in range(n):
+    for i in range(len(board)):
         if(isSafe(board,row,i)):
             board[row][i] = 'Q'
             l.extend(getNQueens(board,row+1,0))
@@ -33,7 +33,7 @@ def isSafe(board,row,col):
             return False
     
     # right diagonal
-    right = min(row,n-col-1)
+    right = min(row,len(board)-col-1)
     for i in range(1,right+1):
         if(board[row-i][col+i]=="Q"):
             return False
