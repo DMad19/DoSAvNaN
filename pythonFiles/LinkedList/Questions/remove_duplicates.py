@@ -16,7 +16,7 @@ class Solution:
             first.next = None
         return head
     # Kunal's
-    def deleteDuplicates2(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def deleteDuplicates2(self, head):
         node = head
         while(node):
             if(node.next!=None and node.val == node.next.val):
