@@ -15,3 +15,12 @@ class Solution:
         if first:
             first.next = None
         return head
+    # Kunal's
+    def deleteDuplicates2(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        node = head
+        while(node):
+            if(node.next!=None and node.val == node.next.val):
+                node.next = node.next.next
+            else:
+                node = node.next
+        return head
