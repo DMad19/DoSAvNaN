@@ -46,6 +46,25 @@ class SingleLinkedList:
         temp._next = self.Node(value,temp._next)
         self._size+=1
         return self._size
+    def insertRecursively(self,temp,index,value):
+        if(temp==None):
+            if(self._head==None):
+                if(index==0):
+                    self._head = self.Node(value)
+                    self._tail = self._head
+                    self._size += 1
+                    return self._head
+                else:
+                    return None
+            if(index!=0):
+                temp = self._head
+        if(index==0):
+            node = self.Node(value)
+            node._next = temp
+            self._size += 1
+            return node
+        temp._next = self.insertRecursively(temp._next,index-1,value)
+        return temp
     def displayLinkedList(self):
         temp = self._head
         while(temp):
@@ -81,7 +100,8 @@ class SingleLinkedList:
         if index==self._size-1:
             return self.deleteLast()
         node = self._get(index)
-        node._next = node._next._next
+        if(node._next):
+            node._next = node._next._next
         self._size -= 1
         return self._size
     def _get(self,index):
@@ -97,8 +117,15 @@ class SingleLinkedList:
             node = node._next
         return None
 ll = SingleLinkedList()
+ll.insertRecursively(None,0,2000)
+ll.displayLinkedList()
 print(ll.insert(100,0))
 print(ll.insertLast(4))
+ll.displayLinkedList()
+ll.insertRecursively(None,1,1000)
+ll.displayLinkedList()
+ll.insertRecursively(None,4,43)
+ll.displayLinkedList()
 print(ll.delete(1))
 ll.displayLinkedList()
 print(ll.insertFirst(5))
