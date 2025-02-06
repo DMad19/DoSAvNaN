@@ -1,5 +1,5 @@
 # https://leetcode.com/problems/happy-number/
-# pattern slow and fast pointer
+# pattern1 - slow and fast pointer - loop/cycle
 class Solution:
     def isHappy(self, n: int) -> bool:
         slow = n
