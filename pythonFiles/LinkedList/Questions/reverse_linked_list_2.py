@@ -5,7 +5,7 @@ class ListNode:
         self.next = next
 
 class Solution:
-    def reverseBetween(self, head):
+    def reverseBetween(self, head, left, right):
         cur = head
         prev = None
         for i in range(left-1):
