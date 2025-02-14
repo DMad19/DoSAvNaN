@@ -8,6 +8,6 @@ class Solution:
         cur = head
         ans = 0
         while(cur):
-            ans = 2 * ans + (cur.val)
+            ans = 2 * ans + (cur.val) #THis how we get integer from binary by traversing from msb to lsb
             cur = cur.next
         return ans
