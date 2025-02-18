@@ -4,7 +4,7 @@ class DynamicStack(Stack):
         super().__init__(size)
     
     def push(self,element):
-        if(len(self.l) == self.size):
+        if(super().isFull()):
             self.size = self.size * 2
             temp = [0] * self.size
             for i in range(len(self.l)):
