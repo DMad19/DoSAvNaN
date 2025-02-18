@@ -1,10 +1,9 @@
 class Stack:
-    l = []
-    ptr = -1
 
     def __init__(self,size=10):
         self.l = [0]*size
         self.size = size
+        self.ptr = -1
 
     def push(self,element):
         if(self.isFull()):
