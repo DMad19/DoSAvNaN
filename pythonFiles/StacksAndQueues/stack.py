@@ -1,5 +1,4 @@
 class Stack:
-
     def __init__(self,size=10):
         self.l = [0]*size
         self.size = size
